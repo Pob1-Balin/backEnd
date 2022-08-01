@@ -18,19 +18,24 @@ const unitSchema = new mongoose.Schema({
     },
     time_spent:{
         type: String,
-        require: true
     },
     isViewed:{
         type:Boolean,
     },
     video:{
         type:String,
-        require:true
     },
-    moduleID:{
-        type:String,
-        require: true
+    number_of_question:{
+        type: String,
+    },
+    time:{
+        type: String,
+    },
+    unit_content:{
+        type: [Object],
+        blackbox: true
     }
-},{timestamps:true})
+
+})
 
 module.exports = mongoose.model('unit', unitSchema);

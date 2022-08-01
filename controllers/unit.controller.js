@@ -60,7 +60,7 @@ module.exports.fetchUnit = async(req, res)=>{
         res.status(200).json({status: "success", data: unit})
 
     }catch(err){
-        next({msg: "Oops! something went wrong couldn't get units", err})
+        next({msg: "Oops! something went wrong couldn't get units bbb", err})
     }
 }
 
@@ -81,30 +81,9 @@ module.exports.fetchModuleUnit = async(req, res)=>{
         res.status(200).json({status: "success", data: unit})
 
     }catch(err){
-        next({msg: "Oops! something went wrong couldn't get units", err})
+        next({msg: "Oops! something went wrong couldn't get units ffff", err})
     }
 }
-
-
-/* 
-
-@function to get units of a specified model
-
-
-*/
-
-module.exports.moduleUnits = async(req, res)=>{
-    const {id} = req.params
-    Units.find({moduleID: id}, (err, units)=>{
-        if(err){
-            return res.status(400).json({success: false, error: err})
-        }
-        if(units.lenght){
-            return res.status(404).json({success:false, error:"Oops No Units found"})
-        }
-        return res.status(200).json({success:true, data:units})
-    })
-};
 
 /*
  * @function deleting a unit if exist
@@ -144,3 +123,24 @@ module.exports.deleteUnit = (req, res, next) => {
         next({msg: "something went wrong", err})
     }
   }
+
+
+  /*
+ * @function getting a single unit method 2
+ * @params(req,res)
+
+*/
+module.exports.fetchUnitsData = async(req, res)=>{
+    const {id} = req.params
+    Units.find({_id: id})
+    try{
+        const {id} = req.params
+        const unit = await Units.find({_id: id})
+        if(!unit) return res.status(404).json({status: "failed", msg: "Exercise not found"})
+
+        res.status(200).json({status: "success", data: unit})
+
+    }catch(err){
+        next({msg: "Oops! something went wrong couldn't get units ccc", err})
+    }
+}
