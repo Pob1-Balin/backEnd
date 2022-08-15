@@ -18,8 +18,8 @@ const unitSchema = new mongoose.Schema({
     score:{
         type: String,
     },
-    isViewed:{
-        type:Boolean,
+    questions_answered:{
+        type: String,
     },
     video:{
         type:String,

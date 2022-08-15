@@ -5,24 +5,33 @@ const servSchema = new mongoose.Schema({
         type: String,
     },
     services:[{
-        score:{
+        service_id:{
             type: String,
         },
         modules:[{
-            module_time_spent:{
+            module_id:{
                 type: String,
             },
-            module_score:{
-                type: String,
-            },
-            units:{
-                time_spent:{
+            units:[{
+                unit_id:{
                     type: String,
                 },
-                score:{
+                title:{
+                    type: String,
+                },
+                image:{
+                    type: String,
+                },
+                unit_time_spent:{
+                    type: String,
+                },
+                unit_score:{
+                    type: String,
+                },
+                questions_answered:{
                     type: String,
                 }
-            }
+            }]
         }]
     }]
 }, {timestamps: true})
