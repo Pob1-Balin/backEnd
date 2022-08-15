@@ -6,6 +6,8 @@ const { errorHandler } = require('./middleware/errorMiddleware');
 const connectDB = require('./config/db');
 const multer = require('multer')
 const port = process.env.PORT || 7000;
+const passwordReset = require("./routes/passwordReset");
+
 
 connectDB();
 const app = express()
@@ -17,6 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/v1', routes())
 app.use('/api/v1/users', require('./routes/userRoutes'));
+// app.use("/api/v1/password-reset", passwordReset);
 app.use(routes())
 // Handles 5xx errors
 app.use((err, req, res, next)=>{

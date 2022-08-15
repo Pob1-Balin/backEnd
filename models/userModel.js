@@ -1,3 +1,4 @@
+const { boolean } = require('joi')
 const mongoose = require('mongoose')
 
 const userSchema = mongoose.Schema(
@@ -31,7 +32,10 @@ const userSchema = mongoose.Schema(
         type: String,
         required: [true, 'Enter your address'],
     },
-    services:[],
+    services:[String],
+    isAdmin:{
+      type: Boolean,
+    }
   },
   {
     timestamps: true,
