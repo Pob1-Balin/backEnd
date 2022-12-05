@@ -14,11 +14,12 @@ const {
   removeUser
 } = require('../controllers/userController')
 const { protect } = require('../middleware/authMiddleware')
-
+// 653099119 luci
 router.post('/register', registerUser)
 router.post('/login', loginUser)
 router.get('/admin', getAdmin)
 router.get('/', getUsers)
+router.get('/:id/get', getMe)
 router.post('/mail', sendMail)
 router.put('/:id/update', updateUser)
 router.post("/request-mail", resetMail);

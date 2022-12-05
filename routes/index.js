@@ -9,6 +9,7 @@ const exerciseRoutes = require('./exercise.routes')
 const struct1Routes = require('./structure1.routes')
 const servRoutes = require('./serv.routes')
 const answerRoutes = require('./answers.routes')
+const eventsRoutes = require('./events.routes')
 
 module.exports = () =>{
 
@@ -26,6 +27,10 @@ module.exports = () =>{
     router.use('/', struct1Routes())
     // router.use('/client', clientRoutes())
     router.use('/answer', answerRoutes())
+
+    // website routes
+    router.use('/events', eventsRoutes())
+
     return router
 }
 

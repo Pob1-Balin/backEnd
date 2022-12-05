@@ -98,7 +98,7 @@ const getMe = asyncHandler(async (req, res) => {
 
 
 const updateUser = async (req, res, next) => {
-  console.log('update')
+  console.log(req.body.services)
   try {
     const { id } = req.params
     const user = await User.findById(id)
@@ -106,9 +106,7 @@ const updateUser = async (req, res, next) => {
     // console.log(req.body, id)
     if (!user) { return res.status(404).json({ status: "failed", msg: "User not found" }) }
 
-    const updatedService = await User.findByIdAndUpdate(id, req.body, {
-      new: true,
-    })
+    const updatedService = await User.findByIdAndUpdate(id, { $set: req.body }, { new: true })
     res.status(200).json({ status: "success", data: updatedService })
   }
   catch (err) {

@@ -12,6 +12,12 @@ const servSchema = new mongoose.Schema({
             module_id:{
                 type: String,
             },
+            title:{
+                type: String,
+            },
+            image:{
+                type: String,
+            },
             units:[{
                 unit_id:{
                     type: String,
