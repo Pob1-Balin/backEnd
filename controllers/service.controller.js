@@ -9,7 +9,6 @@ module.exports.createService = async(req, res, next) =>{
     try{
         const service = await Service.findOne({name: req.body.name})
         if(service) return res.status(404).json({status: "failed", msg: "Service already exits", service})
-        
         const newService = await Service.create(req.body)
         res.status(201).json({status: "success", data: newService})
 
@@ -67,7 +66,6 @@ module.exports.getunsubscribedServices = async(req, res, next) =>{
  * @params (req, res)
  */
 module.exports.getService = async(req, res, next) =>{
-    console.log('single Service')
     try{
         const {id} = req.params
         const service = await Service.findById(id)
@@ -83,6 +81,9 @@ module.exports.getService = async(req, res, next) =>{
 //////////////////////////////////////////
 module.exports.getUserService = async(req, res, next) =>{
     try{
+        if(req.params.sid == 'undefined'){
+            return
+        }
         const sid = req.params.sid.split('-')
         console.log(sid)
         const serv = []
@@ -108,44 +109,65 @@ module.exports.getUserService = async(req, res, next) =>{
 ////////////////////////////////
 
 
+  /*
+ * @function Updates a module if exist
+ * @params(req,res, next)
 
-
-/**
- * @function updateService for updating a service
- * Verify if the service exist in the database 
- * if true updates the service
- * @params (req, res)
- */
-module.exports.updateService = async(req, res, next) =>{
+*/
+module.exports.updateService = async(req, res, next)=> {
+    console.log("working")
     try{
         const {id} = req.params
         const service = await Service.findById(id)
-        if(!service) return res.status(404).json({status: "failed", msg: "Service not found"})
+        if(!service) return res.status(404).json({status: "failed", msg: "service not found"})
 
         const updatedService = await Service.findByIdAndUpdate(id, {$set:req.body}, {new: true})
         res.status(200).json({status: "success", data: updatedService})
 
     }catch(err){
-        next({msg: "Oops! something went wrong couldn't update service", err})
+        next({msg: "something went wrong", err})
     }
-}
+  }
 
 
-/**
- * @function removeService for deleting a service
- * Verify if the service exist in the database 
- * if true delete the service
- * @params (req, res)
- */
-module.exports.removeService = async(req, res, next) =>{
-    try{
-        const {id} = req.params
-        const service = await Service.findByIdAndRemove(id)
-        if(!service) return res.status(404).json({status: "failed", msg: "Service not found"})
 
-        res.status(200).json({status: "success", data: service, msg: "Service deleted succesfully"})
 
-    }catch(err){
-        next({msg: "Oops! something went wrong couldn't remove service", err})
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * @function Delete a service if exist
+ * @params(req,res, next)
+
+*/
+module.exports.removeService = (req, res, next) => {
+    Service.findByIdAndRemove(
+        req.params.id, (error, data) => {
+      if (error) {
+        return next(error);
+      } else {
+        res.status(200).json({
+          msg: data,
+        });
+      }
+    });
+  };
+
+

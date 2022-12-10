@@ -4,10 +4,6 @@ const unitSchema = new mongoose.Schema({
     module_id:{
         type: String,
     },
-    name:{
-        type: String,
-        require: true
-    },
     title:{
         type: String,
         require: true
@@ -19,23 +15,30 @@ const unitSchema = new mongoose.Schema({
     time_spent:{
         type: String,
     },
-    isViewed:{
-        type:Boolean,
+    score:{
+        type: String,
+    },
+    questions_answered:{
+        type: String,
     },
     video:{
         type:String,
     },
     number_of_question:{
-        type: String,
+        type:String,
+    },
+    questions_time:{
+        type:String,
     },
     time:{
-        type: String,
+        type:String,
+    },
+    unit_home_content:{
+        type:[Object],
     },
     unit_content:{
-        type: [Object],
-        blackbox: true
+        type:[Object],
     }
-
-})
+},{timestamps:true})
 
 module.exports = mongoose.model('unit', unitSchema);
