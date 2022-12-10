@@ -43,6 +43,18 @@ const userSchema = mongoose.Schema(
           module_id:{
               type: String,
           },
+          image:{
+              type: String,
+          },
+          title:{
+              type: String,
+          },
+          time_spent:{
+              type: String,
+          },
+          score:{
+              type: String,
+          },
           units:[{
               unit_id:{
                   type: String,

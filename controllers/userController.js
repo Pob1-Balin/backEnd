@@ -114,7 +114,6 @@ const updateUser = async (req, res, next) => {
   }
 }
 
-
 /**
  * @function getUsers for getting the list of users
  * @params (req, res)

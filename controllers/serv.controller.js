@@ -27,7 +27,7 @@ module.exports.saveServ = async(req,res, next)=>{
 
 
 /*
- * @function getting all units if exist
+ * @function getting all units if exist 
  * @params(req,res)
 
 */
@@ -74,10 +74,6 @@ module.exports.deleteServ = (req, res, next) => {
 
 module.exports.updateServ = async (req, res, next) => {
     console.log(req.body.services)
-    const serrr = req.body.services
-    const dddd = serrr.modules;
-
-    console.log("gff", dddd);
     try {
         const { id } = req.params
         const serv = await Servs.findById(id)
@@ -88,6 +84,7 @@ module.exports.updateServ = async (req, res, next) => {
 
     } catch (err) {
         next({ msg: "something went wrong", err })
+        console.log(err)
     }
 }
 

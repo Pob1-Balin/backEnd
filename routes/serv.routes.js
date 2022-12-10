@@ -10,3 +10,4 @@ module.exports = ()=>{
     router.put('/update/:id', modCtrl.updateServ)
     return router;
 }
+ 
