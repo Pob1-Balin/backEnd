@@ -98,7 +98,7 @@ const getMe = asyncHandler(async (req, res) => {
 
 
 const updateUser = async (req, res, next) => {
-  console.log(req.body.services)
+  // console.log(req.body.services)
   try {
     const { id } = req.params
     const user = await User.findById(id)

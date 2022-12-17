@@ -20,12 +20,21 @@ const serviceSchema = new mongoose.Schema({
     subscribe:{
         type: String,
     },
-    resource:{
-        type: [String],
-    },
     modules:{
         type: [Object],
-    }
+    },
+    resource_description:{
+        type: String,
+        required: true
+    },
+    resource_image:{
+        type: String,
+        required: true
+    },
+    resource_file:{
+        type: String,
+        required: true
+    },
 }, {timestamps: true})
 
 module.exports  = mongoose.model('service', serviceSchema)

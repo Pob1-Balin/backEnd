@@ -9,7 +9,7 @@ module.exports = () =>{
     router.get("/:id", serviceController.getService)
     router.get("/user/:sid", serviceController.getUserService)
     router.put("/update/:id", serviceController.updateService)
-    // router.delete("/:id/remove", serviceController.removeService)
+    router.delete("/:id/remove", serviceController.removeService)
     router.delete('/:id', serviceController.removeService)
     return router
 }

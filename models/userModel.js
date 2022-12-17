@@ -32,6 +32,9 @@ const userSchema = mongoose.Schema(
         type: String,
         required: [true, 'Enter your address'],
     },
+    last_seen:{
+        type: String,
+    },
     isAdmin:{
       type: Boolean,
     },

@@ -65,18 +65,33 @@ module.exports.getunsubscribedServices = async(req, res, next) =>{
  * if true get the service
  * @params (req, res)
  */
-module.exports.getService = async(req, res, next) =>{
+// module.exports.getService = async(req, res, next) =>{
+//     try{
+//         const {id} = req.params
+//         const service = await Service.findById(id)
+//         if(!service) return res.status(404).json({status: "failed", msg: "Service not found"})
+
+//         res.status(200).json({status: "success", data: Service})
+
+//     }catch(err){
+//         next({msg: "Oops! something went wrong couldn't get service", err})
+//     }
+// }
+
+module.exports.getService = async(req, res, next)=>{
+    const {id} = req.params
+    Service.findById(id)
     try{
         const {id} = req.params
-        const service = await Service.findById(id)
-        if(!service) return res.status(404).json({status: "failed", msg: "Service not found"})
+        const serv = await Service.findById(id)
+        if(!serv) return res.status(404).json({status: "failed", msg: "service not found"})
 
-        res.status(200).json({status: "success", data: Service})
-
+        res.status(200).json({status: "success", data: serv})
     }catch(err){
         next({msg: "Oops! something went wrong couldn't get service", err})
     }
 }
+
 
 //////////////////////////////////////////
 module.exports.getUserService = async(req, res, next) =>{
