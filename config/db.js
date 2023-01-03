@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+const DATABASE = process.env.DATABASE
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect('mongodb://localhost:27017/cyberzone')

@@ -10,7 +10,7 @@ const passwordReset = require("./routes/passwordReset");
 
 
 connectDB();
-const app = express()
+const app = express() 
 
 app.use(cors({origin: true}))
 app.use(express.json())
@@ -27,6 +27,7 @@ app.use((err, req, res, next)=>{
 })
 
 ///////////////  images upload ///////////////////
+
 /// Setting up the storage
 var storage = multer.diskStorage({
     destination: './images',
@@ -34,12 +35,14 @@ var storage = multer.diskStorage({
         cb(null, file.originalname);
     }
 })
+
 const upload = multer({storage: storage})
 app.use(express.static(__dirname + "/../build"))
 /// Route for file upload
 app.post("/api/v1/upload", upload.single('myFile'), (req, res,next)=>{
     res.sendStatus(200);
 })
+
 //// route for getting files from the server
 app.get('/api/v1/upload')
 app.use('/api/v1/images', express.static('images'))

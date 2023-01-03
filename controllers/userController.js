@@ -11,7 +11,7 @@ const Joi = require("joi");
 // @desc    Register new user
 // @route   POST /api/v1/users
 const registerUser = asyncHandler(async (req, res) => {
-  const { first_name, email, password, phone_number, gender, country, last_name, services } = req.body
+  const { first_name, email, password, phone_number, gender, country, last_name, services, modules, units } = req.body
 
   if (!first_name || !email || !password || !phone_number || !gender || !country || !last_name) {
     res.status(400)
@@ -40,6 +40,8 @@ const registerUser = asyncHandler(async (req, res) => {
     country,
     last_name,
     services,
+    modules,
+    units
   })
 
   if (user) {
@@ -52,7 +54,9 @@ const registerUser = asyncHandler(async (req, res) => {
       gender: user.gender,
       country: user.country,
       last_name: user.last_name,
-      services: user.services
+      services: user.services,
+      modules: user.modules,
+      units: user.units
     })
   } else {
     res.status(400)
@@ -82,6 +86,8 @@ const loginUser = asyncHandler(async (req, res) => {
       country: user.country,
       last_name: user.last_name,
       services: user.services,
+      modules: user.modules,
+      units: user.units,
       isAdmin: user.isAdmin
     })
   } else {
@@ -98,7 +104,7 @@ const getMe = asyncHandler(async (req, res) => {
 
 
 const updateUser = async (req, res, next) => {
-  // console.log(req.body.services)
+  console.log(req.body)
   try {
     const { id } = req.params
     const user = await User.findById(id)

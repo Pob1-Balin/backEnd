@@ -39,47 +39,50 @@ const userSchema = mongoose.Schema(
       type: Boolean,
     },
     services:[{
-      service_id:{
-          type: String,
-      },
-      modules:[{
-          module_id:{
-              type: String,
-          },
-          image:{
-              type: String,
-          },
-          title:{
-              type: String,
-          },
-          time_spent:{
-              type: String,
-          },
-          score:{
-              type: String,
-          },
-          units:[{
-              unit_id:{
-                  type: String,
-              },
-              title:{
-                  type: String,
-              },
-              image:{
-                  type: String,
-              },
-              unit_time_spent:{
-                  type: String,
-              },
-              unit_score:{
-                  type: String,
-              },
-              questions_answered:{
-                  type: String,
-              }
-          }]
-      }]
-  }]
+        service_id:{
+            type: String,
+        },
+    }],
+    modules:[{
+        service_id:{
+            type: String,
+        },
+        module_id:{
+            type: String,
+        },
+        time_spent:{
+            type: String,
+        },
+        score:{
+            type: String,
+        },
+        image:{
+            type: String,
+        },
+        title:{
+            type: String,
+        }
+    }],
+    units:[{
+        module_id:{
+            type: String,
+        },
+        unit_time_spent:{
+            type: String,
+        },
+        unit_score:{
+            type: String,
+        },
+        questions_answered:{
+            type: String,
+        },
+        image:{
+            type: String,
+        },
+        title:{
+            type: String,
+        }
+    }]
 
   },
   {
