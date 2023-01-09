@@ -76,6 +76,9 @@ const userSchema = mongoose.Schema(
         questions_answered:{
             type: String,
         },
+        number_of_question:{
+            type: String,
+        },
         image:{
             type: String,
         },
